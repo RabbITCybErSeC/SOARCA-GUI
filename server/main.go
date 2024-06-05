@@ -7,6 +7,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+var (
+	Version   string
+	Buildtime string
+)
+
 func main() {
 	router := gin.Default()
 

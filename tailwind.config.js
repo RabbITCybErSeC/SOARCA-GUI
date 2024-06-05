@@ -2,6 +2,7 @@
 module.exports = {
 	content: ["./**/*.templ"],
 	// Disable Tailwind colors:
-	theme: { colors: {} },
+	// theme: { colors: {} },
+	
 	plugins: [require("daisyui")],
 };
