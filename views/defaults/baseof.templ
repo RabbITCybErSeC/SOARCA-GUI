@@ -1,11 +1,12 @@
 package defaults
 
-type Link struct{
-    Name string
-    Href string
-}
+import (
 
-templ Header(title string, description string, content string){
+	"soarca-gui/views/partials"
+)
+
+
+templ Head(title string, description string, content string){
     <head>
         <title>{ title }</title>
         <meta name={ description } content={ content }/>
@@ -16,91 +17,45 @@ templ Header(title string, description string, content string){
         <link rel="stylesheet" href="/public/template.css"/>
 
         <script src="/public/vendor/htmx@1.9.6.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer><
         // <script src="/public/hyperscript@0.9.12.js" defer></script>
         // <script src="/public/alpine@3.13.3.js" defer></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
     </head>
 }
 
-templ RenderLinks(links []Link){
-    for _, link := range links {
-        <a href={templ.URL(link.Href)} class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-        <i class="fas fa-tachometer-alt mr-3"></i> {link.Name} </a>
-    }
-}
 
 
-templ HeaderBar(){
-        <header class="w-full items-center bg-white py-2 px-6 hidden sm:flex">
-            <div class="w-1/2"></div>
-            <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
-                <button @click="isOpen = !isOpen" class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
-                    <img src="https://source.unsplash.com/uJ8LNVCBjFQ/400x400">
-                </button>
-                <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
-                <div x-show="isOpen" class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
-                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Account</a>
-                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Support</a>
-                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Sign Out</a>
-                </div>
+
+
+templ Layout(title string, version string, homelink string) {
+    <!DOCTYPE html>
+
+    <html lang="en" >
+    
+        @Head(title,"","")
+
+        <body class="bg-white font-family-sans-serif flex">
+
+                @partials.Navsidebar(title, 
+                    version,
+                    homelink,
+                    []partials.Link{
+                        {Name: "home", Href: "/home"},
+                        {Name: "Reporting", Href: "/reporting"},
+                        {Name: "Fins", Href: "/fins"},
+                        {Name: "Settings", Href: "/settings"},
+
+                    },
+                )
+    
+            <div class="w-full flex flex-col h-screen overflow-y-hidden">
+                @partials.HeaderBar()
+                { children... }
             </div>
-        </header>
-}
-
-templ MakeNavBar(title string, version string, documentation_url string, links []Link){
-    <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
-        <div class="p-6">
-            <a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">{ title}</a>
-            <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i> New Report
-            </button>
-        </div>
-        <nav class="text-white text-base font-semibold pt-3">
-        
-        @RenderLinks(links)
-        
-        </nav>
-        <a href={templ.URL(documentation_url)} class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4">
-            <i class="fas fa-arrow-circle-up mr-3"></i>
-            Documentation
-            <span style="font-style: italic;">{version}</span>
-        </a>
-    </aside>    
-}
-
-
-templ Layout(title string) {
-
-    <html >
-    @Header("SOARCA", "","")
-
-    <body class="bg-white font-family-sans-serif flex">
-
-
-    @MakeNavBar("SOARCA", 
-    "v1.0",
-    "https://google.com",
-    []Link{
-        {Name: "home", Href: "/home"},
-        {Name: "Reporting", Href: "/reporting"},
-        {Name: "Fins", Href: "/fins"},
-        {Name: "Settings", Href: "/settings"},
-
-    })
- 
-    <div class="w-full flex flex-col h-screen overflow-y-hidden">
-       / // @HeaderBar()
-	    { children... }
-    </div>
-
-    </body>
-		// <body class="h-full" hx-boost="true">
-		// 	<main class="max-w-screen-sm mx-auto h-full px-8 py-12">
-		// 	
-		// 	</main>
-		// 	// <script type="text/hyperscript">
-		// 	// 	on htmx:load call htmx.logAll()
-		// 	// </script
-		// </body>
-	</html>
+            
+        </body>
+	
+    </html>
 }
 

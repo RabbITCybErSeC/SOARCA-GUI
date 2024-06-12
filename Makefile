@@ -8,7 +8,7 @@ dev:
 	@make -j dev-server dev-templ dev-tailwind
 
 dev-server:
-	@cng -k -i '**/*.go' '**/*.html' 'views/public/**/*' -- go run ./server
+	@cng -k -i '**/*.go' '**/*.templ' '**/*.html' 'views/public/**/*' -- go run ./server
 
 dev-templ:
 	@templ generate --watch
@@ -31,25 +31,5 @@ build-templ:
 
 build-tailwind:
 	@npx tailwindcss -m -i ./tailwind.css -o ./views/public/styles.css $(ARGS)
-
-#-----------------------------------------------------
-# DATABASE
-#-----------------------------------------------------
-
-# drop:
-# 	@go run ./cmd/drop
-
-# seed:
-# 	@go run ./cmd/seed
-
-#-----------------------------------------------------
-# DEPLOY
-#-----------------------------------------------------
-
-launch:
-	@fly launch
-
-deploy:
-	@fly deploy
 
 .DEFAULT_GOAL := dev  

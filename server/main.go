@@ -1,8 +1,7 @@
 package main
 
 import (
-	"soarca-gui/views"
-	defaults "soarca-gui/views/defaults"
+	"soarca-gui/handlers"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,14 +12,7 @@ var (
 )
 
 func main() {
-	router := gin.Default()
-
-	component := defaults.Layout("John")
-
-	router.GET("/", func(context *gin.Context) {
-		component.Render(context, context.Writer)
-	})
-
-	router.StaticFS("/public", views.GetPublicAssetsFileSystem())
-	router.Run(":8080")
+	app := gin.Default()
+	handlers.Setup(app)
+	app.Run(":8080")
 }
