@@ -26,36 +26,36 @@ templ Head(title string, description string, content string){
 
 
 
+templ DashboardLayout(title string, version string, homelink string){
 
+   @BaseLayout(title){
+    <body class="bg-white font-family-sans-serif flex">
+            @partials.Navsidebar(title, 
+                version,
+                homelink,
+                []partials.Link{
+                    {Name: "Home", Href: "/home"},
+                    {Name: "Reporting", Href: "/reporting"},
+                    {Name: "Fins", Href: "/fins"},
+                    {Name: "Settings", Href: "/settings"},
 
-templ Layout(title string, version string, homelink string) {
+                },
+            )
+        <div class="w-full flex flex-col h-screen overflow-y-hidden">
+            @partials.HeaderBar()            
+        </div>
+    </body>
+    }
+
+}
+    
+
+templ BaseLayout(title string) {
     <!DOCTYPE html>
 
     <html lang="en" >
-    
         @Head(title,"","")
-
-        <body class="bg-white font-family-sans-serif flex">
-
-                @partials.Navsidebar(title, 
-                    version,
-                    homelink,
-                    []partials.Link{
-                        {Name: "home", Href: "/home"},
-                        {Name: "Reporting", Href: "/reporting"},
-                        {Name: "Fins", Href: "/fins"},
-                        {Name: "Settings", Href: "/settings"},
-
-                    },
-                )
-    
-            <div class="w-full flex flex-col h-screen overflow-y-hidden">
-                @partials.HeaderBar()
-                { children... }
-            </div>
-            
-        </body>
-	
+        { children... }
     </html>
 }
 

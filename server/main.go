@@ -1,7 +1,7 @@
 package main
 
 import (
-	"soarca-gui/handlers"
+	"soarca-gui/routes"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,6 +13,6 @@ var (
 
 func main() {
 	app := gin.Default()
-	handlers.Setup(app)
+	routes.Setup(app)
 	app.Run(":8080")
 }
