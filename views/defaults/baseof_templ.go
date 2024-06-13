@@ -27,7 +27,7 @@ func Head(title string, description string, content string) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 1)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<head><title>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -40,7 +40,7 @@ func Head(title string, description string, content string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 2)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</title><meta name=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -53,7 +53,7 @@ func Head(title string, description string, content string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 3)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" content=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -66,7 +66,7 @@ func Head(title string, description string, content string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 4)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><meta charset=\"utf-8\"><link rel=\"shortcut icon\" href=\"/public/favicon.ico\" type=\"image/x-icon\"><link rel=\"stylesheet\" href=\"/public/styles.css\"><link rel=\"stylesheet\" href=\"/public/template.css\"><script src=\"/public/vendor/htmx@1.9.6.js\" defer></script><script src=\"https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js\" defer><\n        // <script src=\"/public/hyperscript@0.9.12.js\" defer></script><script src=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js\" integrity=\"sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=\" crossorigin=\"anonymous\"></script></head>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -96,7 +96,7 @@ func DashboardLayout(title string, version string, homelink string) templ.Compon
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 5)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<body class=\"bg-white font-family-sans-serif flex\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -113,7 +113,7 @@ func DashboardLayout(title string, version string, homelink string) templ.Compon
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 6)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"w-full flex flex-col h-screen overflow-y-hidden\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -125,7 +125,7 @@ func DashboardLayout(title string, version string, homelink string) templ.Compon
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 7)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></body>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -158,7 +158,7 @@ func BaseLayout(title string) templ.Component {
 			templ_7745c5c3_Var7 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 8)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<!doctype html><html lang=\"en\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -170,7 +170,7 @@ func BaseLayout(title string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 9)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

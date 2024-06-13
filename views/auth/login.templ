@@ -6,17 +6,17 @@ import (
 	
 )
 
-
 templ LoginIndex(title string) {
     @LoginBase(title){
         @LoginForm(title)
+        <h1>
+        143ddddddd
+        </h1>
     }
 }
 
-
 templ LoginBase(title string) {
     @defaults.BaseLayout(title){
-
     <body class="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12 font-family-sans-seri">
         <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
             <h1 class="text-center text-2xl mb-5 font-semibold uppercase">{ title }</h1>

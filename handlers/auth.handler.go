@@ -21,6 +21,7 @@ func (a *AuthHandler) AuthPage(context *gin.Context) {
 
 func (a *AuthHandler) Login(context *gin.Context) {
 	errors := a.inputValidation(context)
+
 	// email := context.PostForm("email")
 	// password := context.PostForm("password")
 

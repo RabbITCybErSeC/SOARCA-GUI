@@ -31,6 +31,7 @@ type Renderer struct {
 
 func (t Renderer) Render(w http.ResponseWriter) error {
 	t.WriteContentType(w)
+
 	if t.Status != -1 {
 		w.WriteHeader(t.Status)
 	}
