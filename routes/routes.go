@@ -19,6 +19,8 @@ func PublicRoutes(app *gin.RouterGroup) {
 	{
 		publicRoute.GET("/", authHandler.AuthPage)
 		publicRoute.POST("/login", authHandler.Login)
+		publicRoute.GET("/dashboard", handlers.HomeDashboard)
+		publicRoute.GET("/reporting", handlers.ReportingDashboard)
 	}
 	publicRoute.StaticFS("/public", views.GetPublicAssetsFileSystem())
 }

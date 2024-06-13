@@ -17,9 +17,9 @@ templ LoginIndex(title string) {
 templ LoginBase(title string) {
     @defaults.BaseLayout(title){
 
-    <div class="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
+    <body class="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12 font-family-sans-seri">
         <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
-            <h1 class="font-bold text-center text-2xl mb-5">{ title }</h1>
+            <h1 class="text-center text-2xl mb-5 font-semibold uppercase">{ title }</h1>
                 <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
                 <div id="extra-information" class="px-5 py-7">
                  // will be filled when error message  
@@ -62,7 +62,7 @@ templ LoginBase(title string) {
             </div>
          </div>
 
-     </div>
+     </body>
 
     }
 }
@@ -80,12 +80,12 @@ templ LoginForm(titel string) {
         <label name="email" type="email" class="font-semibold text-sm text-gray-600 pb-1 block">E-mail</label>
         <input 
             id="email" 
-            name="password"
+            name="email"
             type="email" 
             required
             class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" 
         />
-        <label class="font-semibold text-sm text-gray-600 pb-1 block">Password</label>
+        <label name="password" type="password" class="font-semibold text-sm text-gray-600 pb-1 block">Password</label>
         <input 
             id="password"
             name="password"
