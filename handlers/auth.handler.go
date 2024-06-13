@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"errors"
 	"fmt"
 	"net/http"
 	"strings"
@@ -19,42 +20,31 @@ func (a *AuthHandler) AuthPage(context *gin.Context) {
 }
 
 func (a *AuthHandler) Login(context *gin.Context) {
+	errors := a.inputValidation(context)
 	email := context.PostForm("email")
 	password := context.PostForm("password")
 
-	var errors []string
-
-	if email == "" {
-		errors = append(errors, "Email is required")
-	}
-
-	if password == "" || len(password) < 8 {
-		errors = append(errors, "Password is required")
-	}
-
+	fmt.Println(email, " ", password, len(errors))
 	if len(errors) > 0 {
-		// template := utils.NewTempl(ctx, http.StatusOK, login_view.AuthErrorCmp(errors))
-		// ctx.Render(http.StatusOK, template)
+		template := utils.NewTempl(context, http.StatusOK, authviews.AuthErrorCmp(errors))
+		context.Render(http.StatusOK, template)
 		return
 	}
 	context.Header("HX-Redirect", "/")
 	context.String(http.StatusFound, "")
 }
 
-func (a *AuthHandler) InputValidation(context *gin.Context) {
+func (a *AuthHandler) inputValidation(context *gin.Context) []error {
 	email := context.PostForm("email")
 	password := context.PostForm("password")
 
-	fmt.Println(email, password, "here")
-
-	if email != "" && !strings.Contains(email, "@") {
-		context.String(http.StatusOK, "Email is required")
-		return
+	var validationErrors []error
+	if email == "" || !strings.Contains(email, "@") {
+		validationErrors = append(validationErrors, errors.New("e-mail is required"))
+	}
+	if password != "" || len(password) < 8 {
+		validationErrors = append(validationErrors, errors.New("password must be at least 8 characters long"))
 	}
 
-	if password != "" && len(password) < 8 {
-		context.String(http.StatusOK, "Password is required and must be at least 8 characters long")
-		return
-	}
-	context.String(http.StatusOK, "")
+	return validationErrors
 }
