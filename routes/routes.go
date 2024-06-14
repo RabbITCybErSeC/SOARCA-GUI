@@ -2,8 +2,7 @@ package routes
 
 import (
 	"soarca-gui/handlers"
-	"soarca-gui/views"
-
+	"soarca-gui/public"
 	"github.com/gin-gonic/gin"
 )
 
@@ -22,5 +21,5 @@ func PublicRoutes(app *gin.RouterGroup) {
 		publicRoute.GET("/dashboard", handlers.HomeDashboard)
 		publicRoute.GET("/reporting", handlers.ReportingDashboard)
 	}
-	publicRoute.StaticFS("/public", views.GetPublicAssetsFileSystem())
+	publicRoute.StaticFS("/public", public.GetPublicAssetsFileSystem())
 }

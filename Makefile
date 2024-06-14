@@ -6,24 +6,25 @@
 templ:
 
 dev:
-	@make -j dev-templ dev-server assets sync_assets
-
+	@make -j dev-templ dev-server assets 
 
 dev-server:
 	# run air to detect any go file changes to re-build and re-run the server.
 
-	@go run github.com/cosmtrek/air@v1.51.0 \
+	@go run github.com/air-verse/air@latest \
 	--build.cmd "templ generate && go build --tags dev -o tmp/bin/main ./server/" --build.bin "tmp/bin/main" --build.delay "100" \
 	--build.exclude_dir "node_modules" \
+	--build.exclude_regex ".*_templ.go" \
 	--build.include_ext "go,templ" \
 	--build.stop_on_error "false" \
 	--build.exclude_regex ".*_templ.go" \
+	--build.poll "true" \
 	--misc.clean_on_exit true
 
 
 # watch for any js or css change in the assets/ folder, then reload the browser via templ proxy.
 sync_assets:
-	go run github.com/cosmtrek/air@v1.51.0 \
+	go run github.com/air-verse/air@latest \
 	--build.cmd "go run github.com/a-h/templ/cmd/templ@latest generate --notify-proxy" \
 	--build.bin "true" \
 	--build.delay "100" \
@@ -53,6 +54,6 @@ build-templ:
 	@templ generate
 
 build-tailwind:
-	@npx tailwindcss -m -i ./tailwind.css -o ./views/public/styles.css $(ARGS)
+	@npx tailwindcss -m -i ./views/assets/app.css -o ./public/public/styles.css $(ARGS)
 
 .DEFAULT_GOAL := dev  

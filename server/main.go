@@ -14,5 +14,6 @@ var (
 func main() {
 	app := gin.Default()
 	routes.Setup(app)
+
 	app.Run(":8081")
 }
