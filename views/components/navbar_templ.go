@@ -16,10 +16,10 @@ type link struct {
 }
 
 var links = []link{
-	{Name: "Home", Href: "/home"},
+	//{Name: "Home", Href: "/home"},
 	{Name: "Reporting", Href: "/reporting"},
-	{Name: "Fins", Href: "/fins"},
-	{Name: "Integrations", Href: "/integrations"},
+	//{Name: "Fins", Href: "/fins"},
+	//{Name: "Integrations", Href: "/integrations"},
 	{Name: "Settings", Href: "/settings"},
 }
 

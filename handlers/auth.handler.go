@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"errors"
-	"fmt"
 	"net/http"
 	"strings"
 
@@ -24,7 +23,6 @@ func (a *AuthHandler) Login(context *gin.Context) {
 
 	// email := context.PostForm("email")
 	// password := context.PostForm("password")
-	fmt.Sprintln((errors))
 	if len(errors) > 0 {
 		template := utils.NewTempl(context, http.StatusOK, authviews.AuthErrorCmp(errors))
 		context.Render(http.StatusOK, template)
@@ -37,7 +35,6 @@ func (a *AuthHandler) Login(context *gin.Context) {
 func (a *AuthHandler) inputValidation(context *gin.Context) []error {
 	email := context.PostForm("email")
 	password := context.PostForm("password")
-	fmt.Println(email, " ", password)
 	var validationErrors []error
 	if email == "" {
 		validationErrors = append(validationErrors, errors.New("email is empty"))
