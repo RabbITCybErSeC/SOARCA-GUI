@@ -16,6 +16,16 @@ func HomeDashboard(context *gin.Context) {
 }
 
 func ReportingDashboard(context *gin.Context) {
+
+	render := utils.NewTempl(context, http.StatusOK,
+		reporting.ReportingIndex())
+
+	context.Render(http.StatusOK, render)
+}
+
+func ReportingCard(context *gin.Context) {
+
 	render := utils.NewTempl(context, http.StatusOK, reporting.ReportingIndex())
+
 	context.Render(http.StatusOK, render)
 }
