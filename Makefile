@@ -6,7 +6,7 @@
 templ:
 
 dev:
-	@make -j dev-templ dev-server assets 
+	@make -j dev-templ dev-server dev-tailwind 
 
 dev-server:
 	# run air to detect any go file changes to re-build and re-run the server.
@@ -32,8 +32,6 @@ sync_assets:
 	--build.include_dir "public" \
 	--build.include_ext "js,css"
 
-assets:
-	tailwindcss -i app/assets/app.css -o ./public/assets/styles.css --watch   
 
 dev-templ:
 	@go run github.com/a-h/templ/cmd/templ@latest generate --watch --proxy="http://localhost:8081" --open-browser=false -v
