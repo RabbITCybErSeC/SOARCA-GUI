@@ -30,6 +30,6 @@ func Reporting(app *gin.RouterGroup) {
 	reportingRoute := app.Group("/reporting")
 	{
 		reportingRoute.GET("/", handlers.ReportingDashboard)
-		reportingRoute.GET("/reporting/reportingcard/:id", handlers.ReportingDashboard)
+		reportingRoute.GET("/reportingcard/:id", handlers.ReportingCard)
 	}
 }

@@ -1,10 +1,12 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
 
 	"soarca-gui/utils"
 	"soarca-gui/views"
+	"soarca-gui/views/components"
 	"soarca-gui/views/dashboard/reporting"
 
 	"github.com/gin-gonic/gin"
@@ -25,7 +27,13 @@ func ReportingDashboard(context *gin.Context) {
 
 func ReportingCard(context *gin.Context) {
 
-	render := utils.NewTempl(context, http.StatusOK, reporting.ReportingIndex())
+	id := context.Param("id")
+	fmt.Println(id)
+	updatedCard := components.ReportingCardData{Loaded: true,
+		ID:    fmt.Sprint(id),
+		Value: 10,
+		Name:  "Executed Playbooks"}
+	render := utils.NewTempl(context, http.StatusOK, components.ReportingCard(updatedCard))
 
 	context.Render(http.StatusOK, render)
 }

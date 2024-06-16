@@ -16,7 +16,7 @@ templ ReportingCard(data ReportingCardData) {
 
     if !data.Loaded {
     <div
-        hx-get={fmt.Sprintf("/reportingcard/%d",data.ID)}
+        hx-get={ string(templ.URL(fmt.Sprintf("/reporting/reportingcard/%s", data.ID))) }
         hx-trigger="load"
         hx-swap="outerHTML"
         class="relative"
