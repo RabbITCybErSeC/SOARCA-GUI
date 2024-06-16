@@ -3,7 +3,7 @@ package layouts
 import "soarca-gui/views/components"
 
 templ DashboardLayout(title string, version string, homelink string) {
-   @BaseLayout(title) {
+   @BaseLayout() {
     <body class="bg-blue-50 font-family-sans-serif flex">
             @components.Navsidebar(title, version, homelink)
         <div class="w-full flex flex-col h-screen overflow-y-hidden">

@@ -6,18 +6,18 @@ import (
     "soarca-gui/views/components"
 )
 
-templ LoginIndex(title string) {
-    @LoginBaseLayout(title){
-        @LoginForm(title)
+templ LoginIndex() {
+    @LoginBaseLayout(){
+        @LoginForm()
     }
 }
 
 
-templ LoginBaseLayout(title string) {
-    @layouts.BaseLayout(title){
+templ LoginBaseLayout() {
+    @layouts.BaseLayout(){
     <body class="min-h-screen bg-gray-100 dark:bg-slate-800 flex flex-col justify-center sm:py-12 font-family-sans-seri">
         <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
-            <h1 class="text-center text-2xl mb-5 font-semibold uppercase">{ title }</h1>
+            <h1 class="text-center text-2xl mb-5 font-semibold uppercase"></h1>
                 <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
                 <div id="extra-information" class="px-5 py-7">
                  // will be filled when error message  
@@ -64,7 +64,7 @@ templ LoginBaseLayout(title string) {
     }
 }
 
-templ LoginForm(titel string) {
+templ LoginForm() {
     <form
             hx-post="/login"
             class="px-5 py-7"

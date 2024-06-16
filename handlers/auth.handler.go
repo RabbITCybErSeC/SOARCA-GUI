@@ -15,7 +15,7 @@ import (
 type AuthHandler struct{}
 
 func (a *AuthHandler) AuthPage(context *gin.Context) {
-	render := utils.NewTempl(context, http.StatusOK, authviews.LoginIndex("SOARCA"))
+	render := utils.NewTempl(context, http.StatusOK, authviews.LoginIndex())
 	context.Render(http.StatusOK, render)
 }
 
@@ -24,7 +24,7 @@ func (a *AuthHandler) Login(context *gin.Context) {
 
 	// email := context.PostForm("email")
 	// password := context.PostForm("password")
-
+	fmt.Sprintln((errors))
 	if len(errors) > 0 {
 		template := utils.NewTempl(context, http.StatusOK, authviews.AuthErrorCmp(errors))
 		context.Render(http.StatusOK, template)
