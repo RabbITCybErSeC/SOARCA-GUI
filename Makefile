@@ -6,7 +6,7 @@
 templ:
 
 dev:
-	@make -j dev-templ dev-server dev-tailwind 
+	@make -j dev-templ dev-tailwind dev-server 
 
 dev-server:
 	# run air to detect any go file changes to re-build and re-run the server.

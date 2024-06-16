@@ -1,10 +1,8 @@
-package defaults
+package layouts
 
-import (
-
-	"soarca-gui/views/partials"
+const (
+    apptitle = "SOARCA-GUI"
 )
-
 
 templ Head(title string, description string, content string) {
     <head>
@@ -24,41 +22,11 @@ templ Head(title string, description string, content string) {
     </head>
 }
 
-
-
-templ DashboardLayout(title string, version string, homelink string) {
-
-   @BaseLayout(title) {
-    <body class="bg-white font-family-sans-serif flex">
-            @partials.Navsidebar(title, 
-                version,
-                homelink,
-                []partials.Link{
-                    {Name: "Home", Href: "/home"},
-                    {Name: "Reporting", Href: "/reporting"},
-                    {Name: "Fins", Href: "/fins"},
-                    {Name: "Integrations", Href: "/integrations"},
-                    {Name: "Settings", Href: "/settings"},
-
-                },
-            )
-            
-        <div class="w-full flex flex-col h-screen overflow-y-hidden">
-            @partials.HeaderBar() 
-            <div class="w-full overflow-x-hidden border-t flex flex-col">
-                {children...}          
-            </div>
-        </div>
-    </body>
-    }
-
-}
     
-
 templ BaseLayout(title string) {
     <!DOCTYPE html>
     <html lang="en" >
-        @Head(title,"","")
+        @Head(apptitle,"","")
         { children... }
     </html>
 }

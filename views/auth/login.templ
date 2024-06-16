@@ -1,21 +1,21 @@
 package authviews
 
+
 import (
-    "soarca-gui/views/defaults"
-    "soarca-gui/views/partials"
-	
+    "soarca-gui/views/layouts"
+    "soarca-gui/views/components"
 )
 
 templ LoginIndex(title string) {
-    @LoginBase(title){
+    @LoginBaseLayout(title){
         @LoginForm(title)
     }
 }
 
 
-templ LoginBase(title string) {
-    @defaults.BaseLayout(title){
-    <body class="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12 font-family-sans-seri">
+templ LoginBaseLayout(title string) {
+    @layouts.BaseLayout(title){
+    <body class="min-h-screen bg-gray-100 dark:bg-slate-800 flex flex-col justify-center sm:py-12 font-family-sans-seri">
         <div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
             <h1 class="text-center text-2xl mb-5 font-semibold uppercase">{ title }</h1>
                 <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
@@ -59,15 +59,12 @@ templ LoginBase(title string) {
                 </div>
             </div>
          </div>
-
      </body>
 
     }
 }
 
 templ LoginForm(titel string) {
-   
-   
     <form
             hx-post="/login"
             class="px-5 py-7"
@@ -75,7 +72,7 @@ templ LoginForm(titel string) {
             hx-target="#extra-information"
             hx-swap="innerHTML"
     >
-        <label name="email" type="email" class="font-semibold text-sm text-gray-600 pb-1 block">E-mail</label>
+    <label name="email" type="email" class="font-semibold text-sm text-gray-600 pb-1 block">E-mail</label>
         <input 
             id="email" 
             name="email"
@@ -83,7 +80,7 @@ templ LoginForm(titel string) {
             required
             class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full" 
         />
-        <label name="password" type="password" class="font-semibold text-sm text-gray-600 pb-1 block">Password</label>
+    <label name="password" type="password" class="font-semibold text-sm text-gray-600 pb-1 block">Password</label>
         <input 
             id="password"
             name="password"
@@ -102,8 +99,6 @@ templ LoginForm(titel string) {
 
 templ AuthErrorCmp(errors []error) {
     for _, err := range errors {
-        @partials.WarningNofication(err.Error())
+        @components.WarningNofication(err.Error())
     }
- 
-
 }

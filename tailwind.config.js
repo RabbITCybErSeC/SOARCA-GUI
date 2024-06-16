@@ -7,7 +7,7 @@ module.exports = {
 	darkMode: ['selector', '[data-mode="dark"]'],
 		// ...
 	  
-	plugins: [require("daisyui")],
+	plugins: [],
 };
 
 

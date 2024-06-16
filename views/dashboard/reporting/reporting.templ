@@ -2,11 +2,11 @@ package reporting
 
 
 import (
-    "soarca-gui/views/defaults"
+    "soarca-gui/views/layouts"
 )
 
 templ ReportingIndex() {
-    @defaults.DashboardLayout("SOARCA-GUI", "", ""){
+    @layouts.DashboardLayout("SOARCA-GUI", "", ""){
         
     <main class="w-full flex-grow p-6">
         @ReportingBase()
